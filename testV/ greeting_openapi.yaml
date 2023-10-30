@@ -1,0 +1,40 @@
+openapi: 3.0.0
+info:
+  title: Greeting Service
+  description: A simple greeting service built with Ballerina
+  version: 1.0.0
+servers:
+  - url: http://localhost:9090
+paths:
+  /test/greeting/{name}:
+    get:
+      summary: Get a personalized greeting
+      parameters:
+        - name: name
+          in: path
+          description: Your name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: Hello, John
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: Invalid name parameter
+        '500':
+          description: Internal Server Error
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: Server error occurred
